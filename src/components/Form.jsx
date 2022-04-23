@@ -1,17 +1,12 @@
-/* eslint-disable jsx-a11y/label-has-associated-control */
 const Form = () => (
   <div className="md:w-1/2 lg:w-2/5">
     <h2 className="font-black text-3xl text-center">Seguimiento Pacientes</h2>
     <p className="text-lg mt-5 text-center mb-10">
-      Añade pacientes y
-      <span className="text-indigo-600 font-bold text-lg"> administralos</span>
+      Añade pacientes y<span className="text-indigo-600 font-bold text-lg"> administralos</span>
     </p>
     <form className="bg-white shadow-md rounded-lg px-10 py-10 mb-10">
       <div className="mb-5">
-        <label
-          htmlFor="mascota"
-          className="block text-gray-700 uppercase font-bold"
-        >
+        <label htmlFor="mascota" className="block text-gray-700 uppercase font-bold">
           Nombre Mascota
         </label>
         <input
@@ -22,10 +17,7 @@ const Form = () => (
         />
       </div>
       <div className="mb-5">
-        <label
-          htmlFor="propietario"
-          className="block text-gray-700 uppercase font-bold"
-        >
+        <label htmlFor="propietario" className="block text-gray-700 uppercase font-bold">
           Nombre Propietario
         </label>
         <input
@@ -36,10 +28,7 @@ const Form = () => (
         />
       </div>
       <div className="mb-5">
-        <label
-          htmlFor="email"
-          className="block text-gray-700 uppercase font-bold"
-        >
+        <label htmlFor="email" className="block text-gray-700 uppercase font-bold">
           Email
         </label>
         <input
@@ -50,10 +39,7 @@ const Form = () => (
         />
       </div>
       <div className="mb-5">
-        <label
-          htmlFor="alta"
-          className="block text-gray-700 uppercase font-bold"
-        >
+        <label htmlFor="alta" className="block text-gray-700 uppercase font-bold">
           Alta
         </label>
         <input
@@ -63,10 +49,7 @@ const Form = () => (
         />
       </div>
       <div className="mb-5">
-        <label
-          htmlFor="sintomas"
-          className="block text-gray-700 uppercase font-bold"
-        >
+        <label htmlFor="sintomas" className="block text-gray-700 uppercase font-bold">
           Sintomas
         </label>
         <textarea
