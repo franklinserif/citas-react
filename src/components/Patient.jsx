@@ -20,10 +20,9 @@ const Patient = () => (
       Sintomas:
       <span className="font-normal normal-case">
         {' '}
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque at,
-        molestiae quidem inventore vero vel dolore facere cupiditate
-        consequuntur ea impedit, voluptatum earum accusantium? Esse deserunt
-        alias accusamus totam debitis!
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque at, molestiae quidem
+        inventore vero vel dolore facere cupiditate consequuntur ea impedit, voluptatum earum
+        accusantium? Esse deserunt alias accusamus totam debitis!
       </span>
     </p>
   </div>

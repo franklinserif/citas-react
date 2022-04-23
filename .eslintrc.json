@@ -7,7 +7,8 @@
     "plugin:react/recommended",
     "airbnb",
     "plugin:react/jsx-runtime",
-    "prettier"
+    "prettier",
+    "plugin:prettier/recommended"
   ],
   "parserOptions": {
     "ecmaFeatures": {
@@ -16,14 +17,6 @@
     "ecmaVersion": "latest",
     "sourceType": "module"
   },
-  "plugins": ["react"],
-  "rules": {
-    "react/function-component-definition": [
-      2,
-      {
-        "namedComponents": "arrow-function",
-        "unnamedComponents": "arrow-function"
-      }
-    ]
-  }
+  "plugins": ["react", "prettier"],
+  "rules": {}
 }
