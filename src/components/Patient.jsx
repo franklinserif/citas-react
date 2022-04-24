@@ -1,6 +1,9 @@
+import { useContext } from 'react';
 import PropTypes from 'prop-types';
+import { PatientsContext } from '../context/PatientsProvider';
 
 const Patient = ({ patient }) => {
+  const { setPatient } = useContext(PatientsContext);
   const { name, owner, email, discharged, symptom } = patient;
 
   return (
@@ -28,6 +31,7 @@ const Patient = ({ patient }) => {
       <div className="flex justify-between mt-10">
         <button
           type="button"
+          onClick={() => setPatient(patient)}
           className="py-2 px-10 bg-indigo-500 hover:bg-indigo-700 transition-all text-white font-bold uppercase rounded-md"
         >
           Editar
