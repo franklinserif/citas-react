@@ -5,9 +5,10 @@ export const PatientsContext = createContext({});
 
 const PatientsProvider = ({ children }) => {
   const [patients, setPatients] = useState([]);
+  const [patient, setPatient] = useState({});
 
   return (
-    <PatientsContext.Provider value={{ patients, setPatients }}>
+    <PatientsContext.Provider value={{ patients, setPatients, patient, setPatient }}>
       {children}
     </PatientsContext.Provider>
   );

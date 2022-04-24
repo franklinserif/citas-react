@@ -1,4 +1,4 @@
-import { useState, useContext } from 'react';
+import { useContext } from 'react';
 import Header from './components/Header';
 import Form from './components/Form';
 import PatientList from './components/PatientList';
@@ -6,7 +6,6 @@ import { PatientsContext } from './context/PatientsProvider';
 
 const App = () => {
   const { patients, setPatients } = useContext(PatientsContext);
-  const [patient, setPatient] = useState({});
 
   return (
     <div className="container mx-auto mt-20">
