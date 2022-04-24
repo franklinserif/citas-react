@@ -10,8 +10,8 @@ const App = () => {
     <div className="container mx-auto mt-20">
       <Header />
       <div className="mt-12 md:flex">
-        <Form />
-        <PatientList />
+        <Form setPatients={setPatients} />
+        <PatientList patients={patients} />
       </div>
     </div>
   );

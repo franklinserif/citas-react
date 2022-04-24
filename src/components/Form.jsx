@@ -1,6 +1,8 @@
 import { useState } from 'react';
+import PropTypes from 'prop-types';
+import Error from './Error';
 
-const Form = () => {
+const Form = ({ setPatients }) => {
   const [formState, setFormState] = useState({
     name: '',
     owner: '',
@@ -15,12 +17,21 @@ const Form = () => {
     event.preventDefault();
 
     const { name, owner, email, discharged, symptom } = formState;
+
     if ([name, owner, email, discharged, symptom].includes('')) {
       setError(true);
       return null;
     }
 
     setError(false);
+    setPatients((prevState) => [...prevState, formState]);
+    setFormState({
+      name: '',
+      owner: '',
+      email: '',
+      discharged: '',
+      symptom: '',
+    });
     return null;
   };
 
@@ -31,11 +42,7 @@ const Form = () => {
         Añade pacientes y<span className="text-indigo-600 font-bold text-lg"> administralos</span>
       </p>
       <form className="bg-white shadow-md rounded-lg px-10 py-10 mb-10">
-        {error && (
-          <div className="bg-red-400 text-white text-center mb-3 rounded-md p-2 uppercase">
-            Todos los campos son olbigatorios
-          </div>
-        )}
+        {error && <Error>Todos los campos son olbigatorios</Error>}
         <div className="mb-5">
           <label htmlFor="mascota" className="block text-gray-700 uppercase font-bold">
             Nombre Mascota
@@ -139,4 +146,9 @@ const Form = () => {
     </div>
   );
 };
+
+Form.propTypes = {
+  setPatients: PropTypes.func.isRequired,
+};
+
 export default Form;
