@@ -4,7 +4,8 @@ import Form from './components/Form';
 import PatientList from './components/PatientList';
 
 const App = () => {
-  const [patient, setPatient] = useState([]);
+  const [patients, setPatients] = useState([]);
+
   return (
     <div className="container mx-auto mt-20">
       <Header />
