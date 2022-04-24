@@ -1,3 +1,3 @@
 export default function generateId() {
-  return Math.random().toString(36).substring(2) + Date.now().substring(36);
+  return Math.random().toString(36).substring(2) + Date.now();
 }
