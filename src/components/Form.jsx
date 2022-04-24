@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import PropTypes from 'prop-types';
 import Error from './Error';
+import generateId from '../Helpers/GenerateId';
 
 const Form = ({ setPatients }) => {
   const [formState, setFormState] = useState({
@@ -9,6 +10,7 @@ const Form = ({ setPatients }) => {
     email: '',
     discharged: '',
     symptom: '',
+    id: '',
   });
 
   const [error, setError] = useState(false);
@@ -24,7 +26,7 @@ const Form = ({ setPatients }) => {
     }
 
     setError(false);
-    setPatients((prevState) => [...prevState, formState]);
+    setPatients((prevState) => [...prevState, { ...formState, id: generateId() }]);
     setFormState({
       name: '',
       owner: '',
