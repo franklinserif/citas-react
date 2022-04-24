@@ -1,4 +1,6 @@
-const Patient = () => (
+import PropTypes from 'prop-types';
+
+const Patient = ({ patient }) => (
   <div className="m-5 bg-white shadow-md px-5 py-10 rounded-xl">
     <p className="font-bold mb-3 text-gray-700 uppercase">
       Nombre:
@@ -27,5 +29,15 @@ const Patient = () => (
     </p>
   </div>
 );
+
+Patient.propTypes = {
+  patient: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    owner: PropTypes.string.isRequired,
+    email: PropTypes.string.isRequired,
+    discharged: PropTypes.string.isRequired,
+    symptom: PropTypes.string.isRequired,
+  }).isRequired,
+};
 
 export default Patient;
