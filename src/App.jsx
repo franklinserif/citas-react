@@ -1,15 +1,18 @@
+import { useState } from 'react';
 import Header from './components/Header';
 import Form from './components/Form';
 import PatientList from './components/PatientList';
 
-const App = () => (
-  <div className="container mx-auto mt-20">
-    <Header />
-    <div className="mt-12 md:flex">
-      <Form />
-      <PatientList />
+const App = () => {
+  const [patient, setPatient] = useState([]);
+  return (
+    <div className="container mx-auto mt-20">
+      <Header />
+      <div className="mt-12 md:flex">
+        <Form />
+        <PatientList />
+      </div>
     </div>
-  </div>
-);
-
+  );
+};
 export default App;
