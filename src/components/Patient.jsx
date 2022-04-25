@@ -57,4 +57,8 @@ Patient.propTypes = {
   }),
 };
 
+Patient.defaultProps = {
+  patient: {},
+};
+
 export default Patient;

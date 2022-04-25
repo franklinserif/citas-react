@@ -12,7 +12,7 @@ const PatientList = ({ patients = [] }) => {
             <span className="text-indigo-600 font-bold"> Pacientes</span>
           </p>
           {patients.map((patient) => (
-            <Patient patient={patient} key={patient.id} />
+            <Patient patient={patient} key={patient?.id} />
           ))}
         </>
       ) : (

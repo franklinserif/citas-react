@@ -163,12 +163,12 @@ const Form = ({ createPatient, patient, updatePatient }) => {
 Form.propTypes = {
   createPatient: PropTypes.func.isRequired,
   patient: PropTypes.shape({
-    id: PropTypes.string.isRequired,
-    name: PropTypes.string.isRequired,
-    owner: PropTypes.string.isRequired,
-    email: PropTypes.string.isRequired,
-    discharged: PropTypes.string.isRequired,
-    symptom: PropTypes.string.isRequired,
+    id: PropTypes.string,
+    name: PropTypes.string,
+    owner: PropTypes.string,
+    email: PropTypes.string,
+    discharged: PropTypes.string,
+    symptom: PropTypes.string,
   }).isRequired,
   updatePatient: PropTypes.func.isRequired,
 };

@@ -12,7 +12,10 @@ const App = () => {
       <Header />
       <div className="mt-12 md:flex">
         <Form
-          createPatient={(newPatient) => dispatch({ type: TYPE.CREATE, payload: newPatient })}
+          createPatient={(newPatient) => {
+            dispatch({ type: TYPE.CREATE, payload: newPatient });
+            setPatient({});
+          }}
           patient={patient}
           updatePatient={(editPatient) => dispatch({ type: TYPE.UPDATE, payload: editPatient })}
         />
