@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import Patient from './Patient';
 
-const PatientList = ({ patients }) => {
+const PatientList = ({ patients = [] }) => {
   return (
     <div className="md:w-1/2 lg:w-3/5 md:h-screen overflow-y-scroll">
       {patients && patients.length !== 0 ? (
@@ -31,13 +31,17 @@ const PatientList = ({ patients }) => {
 PatientList.propTypes = {
   patients: PropTypes.arrayOf(
     PropTypes.shape({
-      name: PropTypes.string.isRequired,
-      owner: PropTypes.string.isRequired,
-      email: PropTypes.string.isRequired,
-      discharged: PropTypes.string.isRequired,
-      symptom: PropTypes.string.isRequired,
-    }).isRequired
-  ).isRequired,
+      name: PropTypes.string,
+      owner: PropTypes.string,
+      email: PropTypes.string,
+      discharged: PropTypes.string,
+      symptom: PropTypes.string,
+    })
+  ),
+};
+
+PatientList.defaultProps = {
+  patients: [],
 };
 
 export default PatientList;

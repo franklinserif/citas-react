@@ -5,14 +5,18 @@ import PatientList from './components/PatientList';
 import { PatientsContext } from './context/PatientsProvider';
 
 const App = () => {
-  const { patients, setPatients } = useContext(PatientsContext);
+  const { patients, dispatch, TYPE, patient, setPatient } = useContext(PatientsContext);
 
   return (
     <div className="container mx-auto mt-20">
       <Header />
       <div className="mt-12 md:flex">
-        <Form setPatients={setPatients} />
-        <PatientList patients={patients} />
+        <Form
+          createPatient={(newPatient) => dispatch({ type: TYPE.CREATE, payload: newPatient })}
+          patient={patient}
+          updatePatient={(editPatient) => dispatch({ type: TYPE.UPDATE, payload: editPatient })}
+        />
+        <PatientList patients={patients} setPatient={setPatient} />
       </div>
     </div>
   );

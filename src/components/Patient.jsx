@@ -49,12 +49,12 @@ const Patient = ({ patient }) => {
 
 Patient.propTypes = {
   patient: PropTypes.shape({
-    name: PropTypes.string.isRequired,
-    owner: PropTypes.string.isRequired,
-    email: PropTypes.string.isRequired,
-    discharged: PropTypes.string.isRequired,
-    symptom: PropTypes.string.isRequired,
-  }).isRequired,
+    name: PropTypes.string,
+    owner: PropTypes.string,
+    email: PropTypes.string,
+    discharged: PropTypes.string,
+    symptom: PropTypes.string,
+  }),
 };
 
 export default Patient;

@@ -1,9 +1,9 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import Error from './Error';
 import generateId from '../Helpers/GenerateId';
 
-const Form = ({ setPatients }) => {
+const Form = ({ createPatient, patient, updatePatient }) => {
   const [formState, setFormState] = useState({
     name: '',
     owner: '',
@@ -15,6 +15,12 @@ const Form = ({ setPatients }) => {
 
   const [error, setError] = useState(false);
 
+  useEffect(() => {
+    if (patient?.id) {
+      setFormState(patient);
+    }
+  }, [patient]);
+
   const handleSubmit = (event) => {
     event.preventDefault();
 
@@ -25,8 +31,13 @@ const Form = ({ setPatients }) => {
       return null;
     }
 
-    setError(false);
-    setPatients((prevState) => [...prevState, { ...formState, id: generateId() }]);
+    if (patient?.id) {
+      updatePatient({ ...formState, id: patient.id });
+    } else {
+      setError(false);
+      createPatient({ ...formState, id: generateId() });
+    }
+
     setFormState({
       name: '',
       owner: '',
@@ -141,7 +152,7 @@ const Form = ({ setPatients }) => {
         <input
           type="submit"
           className="bg-indigo-600 w-full p-3 text-white uppercase font-bold hover:bg-indigo-700 cursor-pointer transition-all"
-          value="Agregar paciente"
+          value={patient?.id ? 'Editar paciente' : 'Agregar paciente'}
           onClick={handleSubmit}
         />
       </form>
@@ -150,7 +161,16 @@ const Form = ({ setPatients }) => {
 };
 
 Form.propTypes = {
-  setPatients: PropTypes.func.isRequired,
+  createPatient: PropTypes.func.isRequired,
+  patient: PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    owner: PropTypes.string.isRequired,
+    email: PropTypes.string.isRequired,
+    discharged: PropTypes.string.isRequired,
+    symptom: PropTypes.string.isRequired,
+  }).isRequired,
+  updatePatient: PropTypes.func.isRequired,
 };
 
 export default Form;
