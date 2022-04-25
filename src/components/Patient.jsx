@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { PatientsContext } from '../context/PatientsProvider';
 
 const Patient = ({ patient }) => {
-  const { setPatient } = useContext(PatientsContext);
+  const { setPatient, dispatch, TYPE } = useContext(PatientsContext);
   const { name, owner, email, discharged, symptom } = patient;
 
   return (
@@ -38,6 +38,7 @@ const Patient = ({ patient }) => {
         </button>{' '}
         <button
           type="button"
+          onClick={() => dispatch({ type: TYPE.DELETE, payload: patient?.id })}
           className="py-2 px-10 bg-red-500 hover:bg-red-700 transition-all text-white font-bold uppercase rounded-md"
         >
           Eliminar
@@ -49,6 +50,7 @@ const Patient = ({ patient }) => {
 
 Patient.propTypes = {
   patient: PropTypes.shape({
+    id: PropTypes.string,
     name: PropTypes.string,
     owner: PropTypes.string,
     email: PropTypes.string,
