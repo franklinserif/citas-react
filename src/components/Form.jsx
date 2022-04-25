@@ -1,7 +1,10 @@
 import { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import Error from './Error';
+import Input from './Input';
 import generateId from '../Helpers/GenerateId';
+import DateInput from './DateInput';
+import TextArea from './TextArea';
 
 const Form = ({ createPatient, patient, updatePatient }) => {
   const [formState, setFormState] = useState({
@@ -20,6 +23,10 @@ const Form = ({ createPatient, patient, updatePatient }) => {
       setFormState(patient);
     }
   }, [patient]);
+
+  const handleChange = ({ name, value }) => {
+    setFormState((prevState) => ({ ...prevState, [name]: value }));
+  };
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -56,99 +63,44 @@ const Form = ({ createPatient, patient, updatePatient }) => {
       </p>
       <form className="bg-white shadow-md rounded-lg px-10 py-10 mb-10">
         {error && <Error>Todos los campos son olbigatorios</Error>}
-        <div className="mb-5">
-          <label htmlFor="mascota" className="block text-gray-700 uppercase font-bold">
-            Nombre Mascota
-          </label>
-          <input
-            id="mascota"
-            className="border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md"
-            name="name"
-            type="text"
-            placeholder="Nombre de la mascota"
-            value={formState.name}
-            onChange={(event) =>
-              setFormState((prevState) => ({
-                ...prevState,
-                [event.target.name]: event.target.value,
-              }))
-            }
-          />
-        </div>
-        <div className="mb-5">
-          <label htmlFor="propietario" className="block text-gray-700 uppercase font-bold">
-            Nombre Propietario
-          </label>
-          <input
-            id="propietario"
-            name="owner"
-            className="border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md"
-            type="text"
-            placeholder="Nombre del propietario"
-            value={formState.owner}
-            onChange={(event) =>
-              setFormState((prevState) => ({
-                ...prevState,
-                [event.target.name]: event.target.value,
-              }))
-            }
-          />
-        </div>
-        <div className="mb-5">
-          <label htmlFor="email" className="block text-gray-700 uppercase font-bold">
-            Email
-          </label>
-          <input
-            id="email"
-            name="email"
-            className="border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md"
-            type="email"
-            placeholder="Email contacto propietario"
-            value={formState.email}
-            onChange={(event) =>
-              setFormState((prevState) => ({
-                ...prevState,
-                [event.target.name]: event.target.value,
-              }))
-            }
-          />
-        </div>
-        <div className="mb-5">
-          <label htmlFor="alta" className="block text-gray-700 uppercase font-bold">
-            Alta
-          </label>
-          <input
-            id="alta"
-            name="discharged"
-            className="border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md"
-            type="date"
-            value={formState.discharged}
-            onChange={(event) =>
-              setFormState((prevState) => ({
-                ...prevState,
-                [event.target.name]: event.target.value,
-              }))
-            }
-          />
-        </div>
-        <div className="mb-5">
-          <label htmlFor="sintomas" className="block text-gray-700 uppercase font-bold">
-            Sintomas
-          </label>
-          <textarea
-            id="sintomas"
-            name="symptom"
-            placeholder="Describe los sintamas"
-            className="border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md"
-            value={formState.symptom}
-            onChange={(event) =>
-              setFormState((prevState) => ({
-                ...prevState,
-                [event.target.name]: event.target.value,
-              }))
-            }
-          />
-        </div>
+        <Input
+          type="text"
+          name="name"
+          placeholder="Nombre de la mascota"
+          onChange={handleChange}
+          label="Nombre Mascota"
+          value={formState.name}
+        />
+        <Input
+          type="text"
+          placeholder="Nombre del propietario"
+          onChange={handleChange}
+          name="owner"
+          label=" Nombre Propietario"
+          value={formState.owner}
+        />
+        <Input
+          type="email"
+          placeholder="Email contacto propietario"
+          onChange={handleChange}
+          name="email"
+          label=" email"
+          value={formState.email}
+        />
+        <DateInput
+          name="discharged"
+          label="Alta"
+          onChange={handleChange}
+          value={formState.discharged}
+        />
+
+        <TextArea
+          name="symptom"
+          label="Sintomas"
+          onChange={handleChange}
+          placeholder="Describe los sintamas"
+          value={formState.symptom}
+        />
         <input
           type="submit"
           className="bg-indigo-600 w-full p-3 text-white uppercase font-bold hover:bg-indigo-700 cursor-pointer transition-all"
